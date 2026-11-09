@@ -1,0 +1,5 @@
+/target/
+*.log
+*.exe
+*.smoke-test.txt
+/verification.txt

@@ -1,0 +1,26 @@
+[package]
+name = "cpu-memory-tray"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.90"
+description = "A small Windows CPU and RAM tray monitor"
+license = "MIT"
+
+[target.'cfg(windows)'.dependencies]
+tray-icon = { version = "=0.25.1", default-features = false }
+windows-sys = { version = "0.61", features = [
+    "Win32_Foundation",
+    "Win32_System_SystemInformation",
+    "Win32_System_Threading",
+    "Win32_System_Com",
+    "Win32_System_ProcessStatus",
+    "Win32_System_Registry",
+    "Win32_Security",
+    "Win32_UI_WindowsAndMessaging",
+] }
+
+[profile.release]
+opt-level = "s"
+lto = "thin"
+codegen-units = 1
+strip = true
